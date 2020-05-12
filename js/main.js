@@ -35,16 +35,16 @@ switch (message.substring(1,6)) {
   case "GPGGA":
 	logToTerminalGPGGA(message);
 	break;
-	case "GPGSA":
+  case "GPGSA":
 	logToTerminalGPGSA(message);
 	break;
-	case "PFLAA":
+  case "PFLAA":
 	logToTerminalPFLAA(message);
 	break;
-	case "PFLAU":
-	logToTerminalPFLAU(message);
+  case "PFLAU":
+//	logToTerminalPFLAU(message);
 	break;
-		default:
+  default:
 	terminalContainer.insertAdjacentHTML('beforeend',
       `<div${type && ` class="${type}"`}>${message}</div>`);
 };
@@ -60,7 +60,7 @@ var chars = message.split(',');
 <summary> <div in class="in">${message}</div>  </summary>
 <table> 
 <tr> <td>${chars[0]}  </td> <td> Operating status and priority intruder and obstacle data  </td></tr>
-<tr> <td>${chars[1]}  </td> <td><details> <summary> RX	      </summary> Number of devices with unique ID’s currently physically received regardless of the horizontal or vertical separation, an integer from 0 to 99. Because the processing might be based on extrapolated historical data, Rx might be lower than the number of aircraft in range, i.e. there might be other trafficaround (even if the number is zero). Do not expect to receive <Rx> PFLAA sentences, because the number of aircraft being processed might be higher or lower.</details> </td></tr>
+<tr> <td>${chars[1]}  </td> <td><details> <summary> RX	      </summary> Number of devices with unique ID’s currently physically received regardless of the horizontal or vertical separation, an integer from 0 to 99. Because the processing might be based on extrapolated historical data, Rx might be lower than the number of aircraft in range, i.e. there might be other trafficaround (even if the number is zero). Do not expect to receive Rx PFLAA sentences, because the number of aircraft being processed might be higher or lower.</details> </td></tr>
 <tr> <td>${chars[2]}  </td> <td><details> <summary> TX        </summary> Transmission status, 1 (hex31) for OK and 0 (hex30) for no transmission </details></td></tr>
 <tr> <td>${chars[3]}  </td> <td><details> <summary> GPS       </summary> GPS status: 0 (hex30) for no GPS reception, 2 (hex32) for 3d-fix when moving and 1 (hex31) for 3d-fix on ground, i.e. not airborne. If <GPS> goes to 0, FLARM does not operate as warning device, nevertheless wait for some seconds to issue any warning to 3rd party application’s users.</details></td></tr>
 <tr> <td>${chars[4]}  </td> <td><details> <summary> Power     </summary> Power status, 1 (hex31) for OK and 0 (hex30) for under- or over-voltage </details></td></tr>
@@ -71,7 +71,7 @@ var chars = message.split(',');
 <tr> <td>${chars[9]}  </td> <td><details> <summary> RelativeDistance          </summary>  Relative horizontal distance in m, unsigned integer. </details></td></tr>
 </table>
 <details>`);
-
+}
 
 const logToTerminalPFLAA = (message) => {
 var chars = message.split(',');
