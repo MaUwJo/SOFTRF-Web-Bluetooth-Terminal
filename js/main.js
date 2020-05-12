@@ -42,7 +42,7 @@ switch (message.substring(1,6)) {
 	logToTerminalPFLAA(message);
 	break;
   case "PFLAU":
-//	logToTerminalPFLAU(message);
+	logToTerminalPFLAU(message);
 	break;
   default:
 	terminalContainer.insertAdjacentHTML('beforeend',
